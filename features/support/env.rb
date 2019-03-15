@@ -3,12 +3,15 @@
 # Any helper functions added here will be available in step
 # definitions
 version = JSON.load(File.read('package.json'))["version"]
+react_version = ENV['REACT_VERSION']
+assert(react_version && react_version.length > 0, "REACT_VERSION is not set")
+
 run_required_commands([
   ['features/scripts/launch_ios_sim.sh'],
   ['features/scripts/pack.sh'],
 ])
 
-Dir.chdir('features/fixtures/sampler') do
+Dir.chdir("features/fixtures/react#{react_version}") do
   run_required_commands([
     ["npm install -g react-native-cli"],
     ["npm install"],
@@ -31,9 +34,10 @@ end
 
 # Runs just before the test suite is terminated
 at_exit do
-  Dir.chdir('features/fixtures/sampler') do
+  react_version = ENV['REACT_VERSION']
+  Dir.chdir("features/fixtures/react#{react_version}") do
     run_required_commands([
-      ["rm -rf features/fixtures/sampler/node_modules/bugsnag-react-native"],
+      ["rm -rf features/fixtures/react#{react_version}/node_modules/bugsnag-react-native"],
       ["pkill Simulator"]
     ])
   end

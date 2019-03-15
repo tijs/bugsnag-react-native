@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cd features/fixtures/sampler && npm start --reset-cache
+cd features/fixtures/react$REACT_VERSION && npm start --reset-cache

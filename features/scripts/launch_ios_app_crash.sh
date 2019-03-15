@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd features/fixtures/sampler
+cd features/fixtures/react$REACT_VERSION
 
 function launch_app() {
 react-native run-ios \
