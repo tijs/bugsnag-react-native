@@ -76,8 +76,9 @@ are delivered in production applications. To get started:
    on your system
 2. Set and export the `ANDROID_HOME` environment variable to the location of the
    Android SDK
-3. Install the testing framework via `bundle install`
-4. `npm run test:e2e:js`
+3. Set and export the `REACT_VERSION` environment variable to the fixture version you wish to test against.  Valid versions include: `57`, `59`
+4. Install the testing framework via `bundle install`
+5. `npm run test:e2e:js`
 
 ## Running the examples app
 
